@@ -23,7 +23,7 @@ const config: ConnectionOptions = {
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
 
   // We are using migrations, synchronize should be set to false.
-  synchronize: !(process.env.NODE_ENV === 'production'),
+  synchronize: process.env.NODE_ENV !== 'production',
 
   // Run migrations automatically,
   // you can disable this if you prefer running migration manually.
