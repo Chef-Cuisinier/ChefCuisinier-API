@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmBaseService } from './config.service';
-import { RecipeService } from './recipe/recipe.service';
-import { RecipeResolver } from './recipe/recipe.resolver';
 import { RecipeModule } from './recipe/recipe.module';
 
 @Module({
@@ -22,6 +20,6 @@ import { RecipeModule } from './recipe/recipe.module';
     RecipeModule,
   ],
   controllers: [],
-  providers: [RecipeService, RecipeResolver],
+  providers: [],
 })
 export class AppModule {}
