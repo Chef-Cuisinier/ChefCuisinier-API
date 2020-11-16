@@ -1,6 +1,7 @@
 import { NotFoundException } from '@nestjs/common';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'apollo-server-express';
+import { EditRecipeInput } from './dto/editRecipe.dto';
 import { NewRecipeInput } from './dto/newRecipe.dto';
 import { RecipesArgs } from './dto/recipes.dto';
 import { Recipe } from './models/recipe.model';
@@ -34,5 +35,22 @@ export class RecipeResolver {
     const recipe = await this.recipeService.create(newRecipeData);
     pubsub.publish('recipeAdded', { recipe });
     return recipe;
+  }
+
+  @Mutation(() => Recipe)
+  async removeProduct(@Args('id') id: string) {
+    return this.recipeService.remove(id);
+  }
+
+  @Mutation(() => Recipe)
+  async editRecipe(
+    @Args('editRecipeData') editRecipeData: EditRecipeInput,
+  ): Promise<Recipe> {
+    return this.recipeService.edit(editRecipeData);
+  }
+
+  @Subscription(() => Recipe)
+  recipeAdded() {
+    return pubsub.asyncIterator('recipeAdded');
   }
 }
