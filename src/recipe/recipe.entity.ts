@@ -29,6 +29,6 @@ export class RecipeEntity {
   @Column({ type: 'timestamptz' })
   createdAt: Date;
 
-  @Column({ type: 'timestamptz' })
+  @Column({ type: 'timestamptz', nullable: true })
   updatedAt: Date;
 }
