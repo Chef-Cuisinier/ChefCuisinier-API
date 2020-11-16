@@ -1,6 +1,7 @@
-import { NotFoundException, Query } from '@nestjs/common';
-import { Args, Resolver } from '@nestjs/graphql';
+import { NotFoundException } from '@nestjs/common';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { PubSub } from 'apollo-server-express';
+import { RecipesArgs } from './dto/recipes.dto';
 import { Recipe } from './models/recipe.model';
 import { RecipeService } from './recipe.service';
 
@@ -18,5 +19,10 @@ export class RecipeResolver {
       throw new NotFoundException(id);
     }
     return recipe;
+  }
+
+  @Query(() => [Recipe])
+  recipes(@Args() recipeArgs: RecipesArgs): Promise<Recipe[]> {
+    return this.recipeService.findAll(recipeArgs);
   }
 }
