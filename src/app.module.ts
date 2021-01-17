@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmBaseService } from './config.service';
 import { RecipeModule } from './recipe/recipe.module';
+import { IngredientModule } from './ingredient/ingredient.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { RecipeModule } from './recipe/recipe.module';
       playground: process.env.NODE_ENV !== 'production',
     }),
     RecipeModule,
+    IngredientModule,
   ],
   controllers: [],
   providers: [],

@@ -31,4 +31,7 @@ export class Recipe {
 
   @Field()
   updatedAt: Date;
+
+  @Field()
+  image: string;
 }

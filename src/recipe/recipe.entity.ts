@@ -31,4 +31,7 @@ export class RecipeEntity {
 
   @Column({ type: 'timestamptz', nullable: true })
   updatedAt: Date;
+
+  @Column({ nullable: true })
+  image: string;
 }
