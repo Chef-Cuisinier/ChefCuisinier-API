@@ -1,7 +1,6 @@
-import { NotFoundException, Query } from '@nestjs/common';
-import { Args, Resolver } from '@nestjs/graphql';
+import { NotFoundException } from '@nestjs/common';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { PubSub } from 'apollo-server-express';
-import { Recipe } from 'src/recipe/models/recipe.model';
 import { IngredientService } from './ingredient.service';
 import { Ingredient } from './models/ingredient.model';
 

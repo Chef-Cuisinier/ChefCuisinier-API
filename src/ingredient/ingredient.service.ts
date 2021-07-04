@@ -20,5 +20,5 @@ export class IngredientService {
     return await this.ingredientRepository.find(ingredientsArgs);
   }
 
-  async create();
+  // async create();
 }
