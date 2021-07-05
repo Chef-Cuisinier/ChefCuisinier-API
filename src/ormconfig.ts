@@ -6,6 +6,8 @@ import { ConnectionOptions } from 'typeorm';
 let data: any;
 if (!(process.env.NODE_ENV === 'production') && fs.existsSync('.env')) {
   data = dotenv.parse(fs.readFileSync(`.env`));
+  console.log('FILE EXISTS');
+  console.log(__dirname);
 } else {
   data = process.env;
 }
@@ -14,7 +16,7 @@ if (!(process.env.NODE_ENV === 'production') && fs.existsSync('.env')) {
 
 // Check typeORM documentation for more information.
 const config: ConnectionOptions = {
-  type: 'cockroachdb',
+  type: 'postgres',
   host: data.DATABASE_HOST,
   port: parseInt(data.DATABASE_PORT, 10),
   username: data.DATABASE_USER,
